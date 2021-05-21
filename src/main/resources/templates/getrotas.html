@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <title>Informacoes das Rotas</title>
+   </head>
+   <body>
+      <!-- Include _menu.html -->
+      <th:block th:include="/_menu"></th:block>   
+       <!--<div th:switch="${rotas}">-->
+    	<div th:if="${rotas == null}">
+    		<h2>Nenhuma rota ainda!</h2>
+    	</div>
+        <div th:unless="${rotas != null}">
+            <h2>Rotas</h2>
+            	<table>
+                	<thead>
+                    	<tr>
+                        	<th>Partida</th>
+                        	<th>Destino</th>
+                        	<th>Duracao</th>
+                        	<th>Codigo</th>
+                    	</tr>
+                	</thead>
+                	<tbody>
+                	<tr th:each="rota : ${rotas}">
+                    	<td th:text="${rota.partida}"></td>
+                    	<td th:text="${rota.destino}"></td>
+                    	<td th:text= "${rota.duracao}"></td>   
+                    	<td th:text= "${rota.codigo}"></td>              	
+                	</tr>
+            	</tbody>
+        	</table>
+    	</div>      
+   </body>
+    
+</html>
