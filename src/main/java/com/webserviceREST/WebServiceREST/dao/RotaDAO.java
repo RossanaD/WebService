@@ -25,7 +25,26 @@ public class RotaDAO {
 			return query.getResultList();
 		}catch (NoResultException e) {
             return null;
-        }
-				
+        }				
+	}
+	
+	public Rota getByCodigo(String codigo) {
+		try {
+			String sql = "Select r from "+ Rota.class.getName() + " r Where r.codigo = :Codigo ";
+			Query query = entityManager.createQuery(sql, Rota.class);
+			query.setParameter("Codigo", codigo);
+			return (Rota) query.getSingleResult();
+		}catch (NoResultException e) {
+			return null;
+		}
+	}
+		
+	public void addRota(Rota rota) {
+		entityManager.persist(rota);        
+	}
+	
+	public void deleteRota(String codigo) {
+		Rota rotaDele = getByCodigo(codigo);
+		entityManager.remove(rotaDele);
 	}
 }

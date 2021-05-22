@@ -1,24 +1,45 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
    <head>
-      <title>Informacoes das Rotas</title>
+   		<meta charset="UTF-8">
+      	<title>Informacões das Rotas</title>
    </head>
    <body>
       <!-- Include _menu.html -->
       <th:block th:include="/_menu"></th:block>   
-       <!--<div th:switch="${rotas}">-->
-    	<div th:if="${rotas == null}">
-    		<h2>Nenhuma rota ainda!</h2>
-    	</div>
-        <div th:unless="${rotas != null}">
+      <div>
+      	<form name='f' th:action="@{/getRotaId}" method='GET'>
+         <table>
+            <tr>
+               <td>Código da rota pra buscar:</td>
+               <td><input type='text' name='codRota' value=''></td>
+            </tr>             
+            <tr>
+               <td><input name="submit" type="submit" value="Buscar" /></td>
+            </tr>
+         </table>
+      </form>
+      <form name='f' th:action="@{/deleteRotaId}" method='GET'>
+         <table>
+            <tr>
+               <td>Código da rota para deletar:</td>
+               <td><input type='text' name='delCodRota' value=''></td>
+            </tr>             
+            <tr>
+               <td><input name="submit" type="submit" value="Deletar" /></td>
+            </tr>
+         </table>
+      </form>    
+      </div>
+        <div>
             <h2>Rotas</h2>
             	<table>
                 	<thead>
                     	<tr>
                         	<th>Partida</th>
                         	<th>Destino</th>
-                        	<th>Duracao</th>
-                        	<th>Codigo</th>
+                        	<th>Duração</th>
+                        	<th>Código</th>
                     	</tr>
                 	</thead>
                 	<tbody>
@@ -26,7 +47,7 @@
                     	<td th:text="${rota.partida}"></td>
                     	<td th:text="${rota.destino}"></td>
                     	<td th:text= "${rota.duracao}"></td>   
-                    	<td th:text= "${rota.codigo}"></td>              	
+                    	<td th:text= "${rota.codigo}"></td>            	
                 	</tr>
             	</tbody>
         	</table>

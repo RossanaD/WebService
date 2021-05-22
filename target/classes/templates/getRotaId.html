@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+   		<meta charset="UTF-8">
+      	<title>Informacão da Rota</title>
+   </head>
+   <body>  
+   		<th:block th:include="/_menu"></th:block>  
+    	<div>
+    		<h3>Informação da rota com o código :
+         		<span th:utext="${Codigo.codigo}"></span>
+      		</h3>
+    	</div>
+    		<table>
+             	<thead>
+                    <tr>
+                        <th>Partida</th>
+                        <th>Destino</th>
+                        <th>Duração</th>
+                        <th>Código</th>
+                    </tr>
+                </thead>
+                <tbody>
+                	<tr>
+                    	<td th:text="${Codigo.partida}"></td>
+                    	<td th:text="${Codigo.destino}"></td>
+                    	<td th:text="${Codigo.duracao}"></td>   
+                    	<td th:text="${Codigo.codigo}"></td>              	
+                	</tr>
+            	</tbody>
+        	</table>
+   </body>
+</html>   

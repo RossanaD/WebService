@@ -15,8 +15,8 @@ public class MainController {
  
     @RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
     public String welcomePage(Model model) {
-        model.addAttribute("title", "Welcome");
-        model.addAttribute("message", "This is welcome page!");
+        model.addAttribute("title", "Bem-vindo");
+        model.addAttribute("message", "Página inicial!");
         return "welcomePage";
     }
  
@@ -69,8 +69,8 @@ public class MainController {
  
             model.addAttribute("userInfo", userInfo);
  
-            String message = "Hi " + principal.getName() //
-                    + "<br> You do not have permission to access this page!";
+            String message = "Olá " + principal.getName() //
+                    + "<br> Você não tem permissão de acessar essa página!";
             model.addAttribute("message", message);
  
         }

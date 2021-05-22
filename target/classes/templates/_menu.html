@@ -1,3 +1,7 @@
+	<head>
+   		<meta charset="UTF-8">
+   </head>
+
 <div xmlns:th="http://www.thymeleaf.org"
      style="border: 1px solid #ccc;padding:5px;margin-bottom:20px;">
  
@@ -5,18 +9,30 @@
  
      | &nbsp;
   
-   <a th:href="@{/userInfo}">User Info</a>
+   <!-- <a th:href="@{/userInfo}">User Info</a>
   
      | &nbsp;
   
    <a th:href="@{/admin}">Admin</a>
     
-     | &nbsp;
+     | &nbsp; -->
      
-   <a th:href="@{/getRotas}">Rotas</a>  
+  <a th:href="@{/getRotas}">Rotas</a>  
    
    	| &nbsp;
       
-   <a th:if="${#request.userPrincipal != null}" th:href="@{/logout}">Logout</a>
+  <a th:href="@{postRota}">Inserir rota</a>   
+      
+    | &nbsp;
+    
+  <a th:href="@{postRota}">Inserir rota</a>   
+      
+    | &nbsp;  
+    
+  <a th:href="@{postAviao}">Inserir Avião</a>   
+      
+    | &nbsp;
+    
+  <a th:if="${#request.userPrincipal != null}" th:href="@{/logout}">Logout</a>
   
 </div>
