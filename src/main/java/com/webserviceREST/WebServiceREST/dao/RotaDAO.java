@@ -1,7 +1,9 @@
 package com.webserviceREST.WebServiceREST.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
+import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
@@ -28,23 +30,38 @@ public class RotaDAO {
         }				
 	}
 	
-	public Rota getByCodigo(String codigo) {
+	public Rota getById(int id) {
 		try {
-			String sql = "Select r from "+ Rota.class.getName() + " r Where r.codigo = :Codigo ";
+			String sql = "Select r from "+ Rota.class.getName() + " r Where r.rotaId = :Rota_Id ";
 			Query query = entityManager.createQuery(sql, Rota.class);
-			query.setParameter("Codigo", codigo);
+			query.setParameter("Rota_Id", id);
 			return (Rota) query.getSingleResult();
 		}catch (NoResultException e) {
 			return null;
 		}
 	}
+	
+	public List<Rota> getPorPartida(String partida){
+		try {
+			String sql = "Select p from "+ Rota.class.getName() + " p Where p.partida= :Partida ";
+			Query query = entityManager.createQuery(sql, Rota.class);
+			query.setParameter("Partida", partida);
+			return query.getResultList();
+		}catch (NoResultException e) {
+            return null;
+        }				
+	}
 		
-	public void addRota(Rota rota) {
-		entityManager.persist(rota);        
+	public void addRota(Rota rota) throws SQLException{
+		try {
+			entityManager.persist(rota);  
+		} catch (EntityExistsException e) {
+			// TODO: handle exception
+		}		      
 	}
 	
-	public void deleteRota(String codigo) {
-		Rota rotaDele = getByCodigo(codigo);
+	public void deleteRota(int id) {
+		Rota rotaDele = getById(id);
 		entityManager.remove(rotaDele);
 	}
 }

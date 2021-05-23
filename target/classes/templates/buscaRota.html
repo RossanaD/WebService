@@ -7,7 +7,7 @@
    <body>
       <!-- Include _menu.html -->
       <th:block th:include="/_menu"></th:block>   
-      <!-- <div>
+      <div>
       	<form name='f' th:action="@{/getRotaId}" method='GET'>
          <table>
             <tr>
@@ -19,6 +19,17 @@
             </tr>
          </table>
       </form>
+      <form name='f' th:action="@{/getRotaByPartida}" method='GET'>
+      <table>
+      		<tr>
+      			<td>Buscar rota por Partida:</td>
+      			<td><input type='text' name='partida' value=''></td>
+      		</tr>
+      		<tr>
+               <td><input name="submit" type="submit" value="Buscar" /></td>
+            </tr>
+      </table>
+      </form>     
       <form name='f' th:action="@{/deleteRotaId}" method='GET'>
          <table>
             <tr>
@@ -33,38 +44,15 @@
       <form name='f' th:action="@{/updateRotaId}" method='GET'>
          <table>
             <tr>
-               <td>Código da rota para atualizar:</td>
-               <td><input type='text' name='updCodRota' value=''></td>
+               <td>Id da rota para atualizar:</td>
+               <td><input type='text' name='updIdRota' value=''></td>
             </tr>             
             <tr>
                <td><input name="submit" type="submit" value="Atualizar" /></td>
             </tr>
          </table>
       </form>     
-      </div> -->
-        <div>
-            <h2>Rotas</h2>
-            	<table>
-                	<thead>
-                    	<tr>
-                    		<th>ID</th>
-                        	<th>Partida</th>
-                        	<th>Destino</th>
-                        	<th>Duração</th>
-                        	<th>Código</th>
-                    	</tr>
-                	</thead>
-                	<tbody>
-                	<tr th:each="rota : ${rotas}">
-                		<td th:text='${rota.rotaId}'>
-                    	<td th:text="${rota.partida}"></td>
-                    	<td th:text="${rota.destino}"></td>
-                    	<td th:text= "${rota.duracao}"></td>   
-                    	<td th:text= "${rota.codigo}"></td>            	
-                	</tr>
-            	</tbody>
-        	</table>
-    	</div>      
+      </div>    
    </body>
     
 </html>

@@ -21,17 +21,25 @@
    
    	| &nbsp;
       
-  <a th:href="@{postRota}">Inserir rota</a>   
-      
-    | &nbsp;
-    
-  <a th:href="@{postRota}">Inserir rota</a>   
+  <a th:href="@{/postRota}">Inserir rota</a>   
       
     | &nbsp;  
     
-  <a th:href="@{postAviao}">Inserir Avião</a>   
+   <a th:href="@{/buscarRota}">Buscar rota</a>   
+      
+    | &nbsp;  
+    
+  <a th:href="@{/getAvioes}">Aviões</a>  
+  
+    | &nbsp;
+    
+  <a th:href="@{/postAviao}">Inserir Avião</a>   
       
     | &nbsp;
+    
+  <a th:href="@{/pesquisaAviao}">Busca Avião</a>  
+  
+  	| &nbsp;
     
   <a th:if="${#request.userPrincipal != null}" th:href="@{/logout}">Logout</a>
   

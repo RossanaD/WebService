@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+   		<meta charset="UTF-8">
+      	<title>Inserir Avião</title>
+   </head>
+   <body>  
+   		<th:block th:include="/_menu"></th:block>  	
+   		<div>
+   			<h1>Informações do avião</h1>
+   		</div>	
+   		<form action="#" th:action="@{/addAviao}" th:object="${aviao}" method="post">
+   			<table>
+   			<tbody>
+   			</tbody>
+   			<tr>
+               	<td>Nome:</td>
+               	<td><input type='text' name='nome' value='' required="required"></td>              
+            </tr> 
+            <tr>
+            	<td>Modelo:</td>
+               	<td><input type='text' name='modelo' value='' required="required"></td> 
+            </tr> 
+            <tr>
+            	<td>Companhia:</td>
+               	<td><input type='text' name='companhia' value='' required="required"></td> 
+            </tr> 
+            <tr>                
+            	<td>Quantidade de passageiros:</td>
+               	<td><input type='number' name='qtdPassageiros' value='' required="required"></td> 
+            </tr> 
+            <tr>
+            	<td>Quantidade de funcionarios:</td>
+               	<td><input type="number" name='qtdStaff' value='' required="required"></td> 
+            </tr>
+            <tr>
+            	<td>Data de fabricação:</td>
+               	<td><input type='text' name='dtFabricacao' value='' required="required"></td> 
+            </tr>   
+            <tr>
+            	<td>Quantidade de viagens feitas:</td>
+               	<td><input type='number' name='qtdViagensFeita' value='' required="required"></td> 
+            </tr>    
+            <tr>
+               <td><input name="submit" type="submit" value="submit" /></td>
+            </tr> 
+   			</table>    	
+		</form>     	
+   </body>
+</html>  
