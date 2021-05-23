@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+   		<meta charset="UTF-8">
+      	<title>Informacão do Avião</title>
+   </head>
+   <body>  
+   		<th:block th:include="/_menu"></th:block>  
+    	<div>
+    		<h3>Informação do avião com o ID :
+         		<span th:utext="${aviao.aviaoId}"></span>
+      		</h3>
+    	</div>
+    		<table>
+                	<thead>
+                    	<tr>
+                        	<th>Nome</th>
+                        	<th>Modelo</th>
+                        	<th>Companhia</th>
+                        	<th>Qtd de passageiros</th>
+                        	<th>Qtd de funcionários</th>
+                        	<th>Data de fabricação</th>
+                        	<th>Quantidade de viagens feitas</th>
+                    	</tr>
+                	</thead>
+                	<tbody>
+                    	<tr>
+                    		<td th:text="${aviao.nome}"></td>
+                    		<td th:text= "${aviao.modelo}"></td>   
+                    		<td th:text= "${aviao.companhia}"></td>
+                    		<td th:text= "${aviao.qtdPassageiros}"></td>
+                    		<td th:text= "${aviao.qtdStaff}"></td>
+                    		<td th:text= "${aviao.dtFabricacao}"></td> 
+                    		<td th:text= "${aviao.qtdViagensFeita}"></td>  
+                    	</tr>             	
+            	</tbody>
+        	</table>
+   </body>
+</html>  

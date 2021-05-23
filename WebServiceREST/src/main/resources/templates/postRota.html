@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+   		<meta charset="UTF-8">
+      	<title>Inserir Rota</title>
+   </head>
+   <body>  
+   		<th:block th:include="/_menu"></th:block>  	
+   		<div>
+   			<h1>Informação da rota</h1>
+   		</div>	
+   		<form action="#" th:action="@{/addrota}" th:object="${rota}" method="post">
+   			<table>
+   			<tbody>
+   			</tbody>
+   			<tr>
+               	<td>Partida:</td>
+               	<td><input type='text' name='partida' value='' required="required"></td>              
+            </tr> 
+            <tr>
+            	<td>Destino:</td>
+               	<td><input type='text' name='destino' value='' required="required"></td> 
+            </tr> 
+            <tr>
+            	<td>Duração:</td>
+               	<td><input type='number' name='duracao' value='' required="required"></td> 
+            </tr> 
+            <tr>
+            	<td>Código:</td>
+               	<td><input type='text' name='codigo' value='' required="required"></td> 
+            </tr>       
+            <tr>
+               <td><input name="submit" type="submit" value="submit" /></td>
+            </tr> 
+   			</table>
+    	
+		</form>     	
+   </body>
+</html>  
