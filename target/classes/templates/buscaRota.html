@@ -29,7 +29,18 @@
                <td><input name="submit" type="submit" value="Buscar" /></td>
             </tr>
       </table>
-      </form>     
+      </form>   
+      <form name='f' th:action="@{/getRotaByDuracao}" method='GET'>
+         <table>
+            <tr>
+               <td>Buscar rota por duração:</td>
+               <td><input type='number' name='duracaoRota' value=''></td>
+            </tr>             
+            <tr>
+               <td><input name="submit" type="submit" value="Buscar" /></td>
+            </tr>
+         </table>
+      </form>  
       <form name='f' th:action="@{/deleteRotaId}" method='GET'>
          <table>
             <tr>

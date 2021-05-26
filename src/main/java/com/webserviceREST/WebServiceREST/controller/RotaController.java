@@ -49,6 +49,16 @@ public class RotaController {
 		return "getRotaPartida";
 	}
 	
+	@RequestMapping(value = "/getRotaByDuracao", method = RequestMethod.GET)
+	public String showRotaByDuracao(Model model, @RequestParam("duracaoRota") long duracao) {
+		List<Rota> rota = rotaDAO.getPorDuracao(duracao);
+		if(rota.isEmpty())
+			throw new IllegalArgumentException("Não existe rota com essa duração");
+		model.addAttribute("rotas", rota);
+		model.addAttribute("duracao", duracao);
+		return "getRotaDuracao";
+	}
+	
 	//Aqui chama o form, pra inserir os valores
 	@RequestMapping(value = "/postRota", method = RequestMethod.GET)
 	public String postRota(Model model, Principal principal) {		

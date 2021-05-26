@@ -52,6 +52,17 @@ public class RotaDAO {
         }				
 	}
 		
+	public List<Rota> getPorDuracao(long duracao){
+		try {
+			String sql = "Select p from "+ Rota.class.getName() + " p Where p.duracao= :Duracao ";
+			Query query = entityManager.createQuery(sql, Rota.class);
+			query.setParameter("Duracao", duracao);
+			return query.getResultList();
+		}catch (NoResultException e) {
+			return null;
+		}
+	}
+	
 	public void addRota(Rota rota) throws SQLException{
 		try {
 			entityManager.persist(rota);  

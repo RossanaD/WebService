@@ -3,6 +3,7 @@ package com.webserviceREST.WebServiceREST.controller;
 import java.security.Principal;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.webserviceREST.WebServiceREST.dao.AviaoDAO;
 import com.webserviceREST.WebServiceREST.entity.Aviao;
-import com.webserviceREST.WebServiceREST.entity.Rota;
 
 @Controller
 public class AviaoController {
@@ -36,7 +36,10 @@ public class AviaoController {
 	
 	@RequestMapping(value = "/getAviaoById", method = RequestMethod.GET)
 	public String showRotaCod(Model model, @RequestParam("idAviao") int id) {
-		model.addAttribute("aviao", aviaoDAO.getAviaoById(id));
+		Aviao aviao = aviaoDAO.getAviaoById(id);
+		if(aviao == null)
+			return "NotFoundAviao";
+		model.addAttribute("aviao", aviao);
 		return "getAviaoId";
 	}
 	
@@ -44,10 +47,20 @@ public class AviaoController {
 	public String showWithModelo(Model model, @RequestParam("modAviao") String modelo) {
 		List<Aviao> avi = aviaoDAO.getAllAvioesWithModelo(modelo);
 		if(avi.isEmpty())
-			throw new IllegalArgumentException("Não existe nos registro aviões com esse modelo");
+			return "NotFoundAviao";
 		model.addAttribute("avioes", avi);
 		model.addAttribute("modelo", modelo);
 		return "getAviaoModel";
+	}
+	
+	@RequestMapping(value = "/getAvioesWithCompanhia", method = RequestMethod.GET)
+	public String showWithCompanhia(Model model, @RequestParam("CompanhiaAviao") String companhia) {
+		List<Aviao> avi = aviaoDAO.getAllAvioesWithCompanhia(companhia);
+		if(avi.isEmpty())
+			return "NotFoundAviao";
+		model.addAttribute("avioes", avi);
+		model.addAttribute("companhia", companhia);
+		return "getAviaoCompanhia";
 	}
 	
 	@RequestMapping(value = "/postAviao", method = RequestMethod.GET)
@@ -57,13 +70,8 @@ public class AviaoController {
 	
 	@RequestMapping(value = "/addAviao", method = RequestMethod.POST)
 	public String formRota(@ModelAttribute Aviao aviao) {
-		try {
-			aviaoDAO.addAviao(aviao);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-		
-		}
-		return "redirect:/getavioes";
+		aviaoDAO.addAviao(aviao);
+		return "redirect:/getAvioes";
 	}
 	
 	//

@@ -46,17 +46,26 @@ public class AviaoDAO {
 		try {
 			String sql = "Select a from "+ Aviao.class.getName()+" a Where a.modelo = :Modelo ";
 			Query query = entityManager.createQuery(sql, Aviao.class);
+			query.setParameter("Modelo", modelo);
 			return query.getResultList();
 		}catch (NoResultException n) {
 			return null;
 		}
 	}
 	
-	public void addAviao(Aviao aviao) throws SQLException {
+	public List<Aviao> getAllAvioesWithCompanhia(String companhia){
 		try {
-			entityManager.persist(aviao);
-		}catch (EntityExistsException e) {
-		}		
+			String sql = "Select c from "+Aviao.class.getName()+" c Where c.companhia = :Companhia ";
+			Query query = entityManager.createQuery(sql, Aviao.class);
+			query.setParameter("Companhia", companhia);
+			return query.getResultList();
+		}catch (NoResultException e) {
+			return null;
+		}
+	}
+	
+	public void addAviao(Aviao aviao) {
+		entityManager.persist(aviao);	
 	}
 	
 	public void deleteAviao(int id) {

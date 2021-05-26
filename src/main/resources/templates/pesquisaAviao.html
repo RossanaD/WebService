@@ -28,7 +28,18 @@
                <td><input name="submit" type="submit" value="Buscar" /></td>
             </tr>
          </table>
-      </form>     
+      </form>   
+      <form name='f' th:action="@{/getAvioesWithCompanhia}" method='GET'>
+         <table>
+            <tr>
+               <td>Companhia do aviao pra buscar:</td>
+               <td><input type="text" name='CompanhiaAviao' value=''></td>
+            </tr>             
+            <tr>
+               <td><input name="submit" type="submit" value="Buscar" /></td>
+            </tr>
+         </table>
+      </form>  
       <form name='f' th:action="@{/deleteAviao}" method='GET'>
          <table>
             <tr>
